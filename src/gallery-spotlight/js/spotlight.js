@@ -7,6 +7,7 @@ Spotlight.ATTRS = {
 	liTplId: {},
 	contentTplId: {},
 	containerId: {},
+	numVisible:3,
 	height: 200,
 	width: 300
 };
@@ -23,7 +24,7 @@ Y.extend(Spotlight, Y.Base, {
 			boundingBox: "#" + carcontId,
 			contentBox: "#" + carcontId + " > ol",
 			animation: {speed: 0.5},
-			numVisible: 3,
+			numVisible: self.get('numVisible'),
 			isVertical: false,
 			height: self.get('height'),
 			width: self.get('width')
