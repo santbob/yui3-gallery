@@ -23,7 +23,7 @@ Y.extend(Spotlight, Y.Base, {
 			boundingBox: "#" + carcontId,
 			contentBox: "#" + carcontId + " > ol",
 			animation: {speed: 0.5},
-			numVisible: [3,1],
+			numVisible: 3,
 			isVertical: false,
 			height: self.get('height'),
 			width: self.get('width')
