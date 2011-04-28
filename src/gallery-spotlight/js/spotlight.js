@@ -13,7 +13,7 @@ Spotlight.ATTRS = {
 };
 Y.extend(Spotlight, Y.Base, {
 	register : function () {
-		var self = this, contId, carcontId, spotNode, carousel, data, conTplId;
+		var self = this, contId, carcontId, spotNode, carousel, data, conTplId, olheight;
 		contId = self.get('containerId');
 		carcontId = contId + "-carousel";
 		spotNode = Y.one("#" + contId + "-content");
@@ -30,13 +30,15 @@ Y.extend(Spotlight, Y.Base, {
 			width: self.get('width')
 		});
 		carousel.on("itemSelected", function (index) {
-			var itemdata,content;
+			var itemdata;
 			itemdata = data[index.pos];
 			if(itemdata && conTplId){
 				self.templatize(conTplId, contId + "-content", itemdata);
 			}
 		});
+		olheight = self.get('height')-40+"px";
 		carousel.render();
+		Y.one("#" + contId + "-ol").setStyle("height",olheight);
 		carousel.scrollTo(1);
 		carousel.scrollTo(0);
 	},
