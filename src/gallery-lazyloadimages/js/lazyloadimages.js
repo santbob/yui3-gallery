@@ -1,4 +1,4 @@
-var LazyLoadImages = {
+var LazyloadImages = {
    /**
     * Fetches the Images for the img tags with attribute data-src immediately,
     * should be used when calling this module on after loading the page.
@@ -26,9 +26,9 @@ var LazyLoadImages = {
     *
     */
    processAfterLoad: function(selecter){
-	Y.on("domready", LazyLoadImages.processnow(selecter));
+	Y.on("domready", LazyloadImages.processnow(selecter));
    }
 };
 
 // Alias it on YUI instance.
-Y.lazyloadimages = LazyLoadImages;
+Y.LazyloadImages = LazyloadImages;
