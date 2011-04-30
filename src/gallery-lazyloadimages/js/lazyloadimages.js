@@ -7,13 +7,13 @@ var LazyLoadImages = {
     *
     */
    processnow: function(selecter) {
-	var imgselecter = "img[xrc]";
+	var imgselecter = "img[data-src]";
 	imgselecter=(selecter)?selecter+" "+imgselecter:imgselecter; 
 	Y.all(imgselecter).each(function (el, i) {
-		var url = el.getAttribute('xrc');
+		var url = el.getAttribute('data-src');
 		if(url){
 			el.setAttribute('src', url);
-			el.removeAttribute('xrc');
+			el.removeAttribute('data-src');
 		}
 	});	
    },
