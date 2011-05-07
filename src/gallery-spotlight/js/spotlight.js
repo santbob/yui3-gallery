@@ -48,8 +48,7 @@ Y.extend(Spotlight, Y.Base, {
 		conNode =  Y.one("#" + conId);
 	
 		if(tplNode){
-			htmlSnip = tplNode.get('innerHTML');
-			//htmlSnip = unescape(htmlSnip);
+			htmlSnip = "<li>" + tplNode.get('innerHTML') + "</li>";
 		}	
 		if(data instanceof Array){
 			Y.each(data, function (i) {
@@ -95,9 +94,14 @@ Y.extend(Spotlight, Y.Base, {
 		self.templatize(liTplId, contId+"-ol",self.get('data'));
 		self.register();
 	},
+	
 	tpl : "<div class=\"spotlight\"><div id=\"{containerId}-carousel\" class=\"yui3-carousel yui3-carousel-horizontal\">" + 
 		"<ol id=\"{containerId}-ol\"></ol></div>" + "<div id=\"{containerId}-content\"></div>" + 
-		"<div id=\"{containerId}-hiddencontent\" style=\"dislay:none\"></div></div>"
+		"<div id=\"{containerId}-hiddencontent\" style=\"dislay:none\"></div></div>",
+	
+	liTpl: "<div class=\"arrow\"><img xrc=\"{photo}\" class=\"thumbnail\" title=\"{title}\" alt=\"{title}\"><p class=\"provider\">{title}</p></div>",
+	
+	conTpl:"<div class=\"spot-content\"><img xrc=\"{photo}\"/></div>"
 });
 
 Y.Spotlight = Spotlight;
