@@ -12,6 +12,12 @@ Spotlight.ATTRS = {
 	width: 300
 };
 Y.extend(Spotlight, Y.Base, {
+	/**
+    * Returns the innerHtml of the given htmlid
+    *
+    * @param {String} htmlid of the element whose innerHtml need to be fetched.
+	*
+    */
 	getHtml : function (htmlid) {
 		var html, htmlNode;
 		if(htmlid){
@@ -22,6 +28,14 @@ Y.extend(Spotlight, Y.Base, {
 		}
 		return html;
 	},
+	/**
+    * Function which build the html from data and template and appends it to the container
+    *
+    * @param {String} tpl html template String
+	* @param {String} conId ContainerId to which the built html should be appended.
+	* @param {String} data JSON data
+	*
+    */
 	templatize : function (tpl, conId, data) {
 		var self = this, content = '', conNode;
 		conNode =  Y.one("#" + conId);
@@ -39,6 +53,11 @@ Y.extend(Spotlight, Y.Base, {
 			Y.LazyloadImages.processnow("#"+conId);		
 		}	
 	},
+	/**
+	*
+    * Registers the Carousel used in the spotlight and sets up the Event handling
+    *
+    */
 	register : function () {
 		var self = this, contId, carcontId, spotNode, carousel, data, olheight, conHtml;
 		contId = self.get('containerId');
@@ -71,6 +90,12 @@ Y.extend(Spotlight, Y.Base, {
 		carousel.scrollTo(1);
 		carousel.scrollTo(0);
 	},
+	/**
+    * Builds the neccessary empty DOM's for Spotlight
+    *
+    * @param {String} Container Id of the Spotlight
+	*
+    */
 	buildSkeleton : function(contId){
 		var self = this, data = {}, skeleton, conNode;
 		conNode = Y.one("#"+contId);
@@ -80,6 +105,12 @@ Y.extend(Spotlight, Y.Base, {
 			conNode.set("innerHTML",skeleton);
 		}	
 	},
+	/**
+    * Builds the Thumbnails (list of small version of the images) for the Carousel
+    *
+    * @param {String} Container Id of the Spotlight
+	*
+    */
 	buildThumbnails : function (contId){
 		var self = this, liHtml;
 		liHtml = self.getHtml(self.get('liTplId'));
@@ -87,6 +118,9 @@ Y.extend(Spotlight, Y.Base, {
 		liHtml = "<li>" + liHtml + "</li>";
 		self.templatize(liHtml, contId+"-ol",self.get('data'));
 	},
+	/**
+	* The Main Function to be executed on the Spotlight instance, will do everything needed.
+	*/
 	process : function () {
 		var self = this, contId, data;
 		contId = self.get('containerId');
@@ -99,12 +133,21 @@ Y.extend(Spotlight, Y.Base, {
 		self.buildThumbnails(contId);
 		self.register();
 	},
+	/**
+	* The Template for basic skeleton of the carousel.
+	*/
 	tpl : "<div class=\"spotlight\"><div id=\"{containerId}-carousel\" class=\"yui3-carousel yui3-carousel-horizontal\">" + 
 		"<ol id=\"{containerId}-ol\"></ol></div>" + "<div id=\"{containerId}-content\"></div>" + 
 		"<div id=\"{containerId}-hiddencontent\" style=\"dislay:none\"></div></div>",
 	
+	/**
+	* The default template for the thumbnail. it can be overwritten using the input attribute
+	*/
 	liTpl: "<div class=\"arrow\"><img data-src=\"{photo}\" class=\"thumbnail\" title=\"{title}\" alt=\"{title}\"><p class=\"title\">{title}</p></div>",
 	
+	/**
+	* The default template for the spotlight content. it can be overwritten using the input attribute
+	*/
 	conTpl:"<div class=\"spot-content\"><img data-src=\"{photo}\"/></div>"
 });
 

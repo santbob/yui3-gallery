@@ -25,7 +25,7 @@
 	background-image:url("http://l.yimg.com/a/i/us/sh/gr/deals/deals_details_sprite_2.png")!important;
 	background-position:-41px -236px!important;background-repeat:no-repeat!important;
 }
-.yui3-skin-sam .spotlight .yui3-carousel-first-button{margin-right:50px;background-position:0 -236px!important;}
+.yui3-skin-sam .spotlight .yui3-carousel-first-button{margin-right:50px;background-position:0 -236px!important;position: relative;right:-15px;}
 .yui3-skin-sam .spotlight .yui3-carousel-first-button-disabled{background-position:0 -265px!important;}
 .yui3-skin-sam .spotlight .yui3-carousel-button-disabled{background-position:-41px -265px!important;}
 
